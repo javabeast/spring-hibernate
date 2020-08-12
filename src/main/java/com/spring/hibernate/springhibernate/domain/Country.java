@@ -1,6 +1,5 @@
 package com.spring.hibernate.springhibernate.domain;
 
-import com.spring.hibernate.springhibernate.constant.Continent;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@SuppressWarnings("JpaDataSourceORMInspection")
 public class Country {
 
     @Id
@@ -18,30 +18,29 @@ public class Country {
     @Column(name = "Name")
     private String name;
 
-    @Enumerated(EnumType.STRING)
     @Column (name = "continent")
-    private Continent continent;
+    private String continent;
 
     @Column(name = "Region")
     private String region;
 
     @Column(name = "SurfaceArea")
-    private float surfaceArea;
+    private Float surfaceArea;
 
     @Column(name = "IndepYear")
-    private int indepYear;
+    private Integer indepYear;
 
     @Column(name = "Population")
-    private int population;
+    private Integer population;
 
     @Column(name = "LifeExpectancy")
-    private float lifeExpectancy;
+    private Float lifeExpectancy;
 
     @Column(name = "GNP")
-    private float gNP;
+    private Float gNP;
 
     @Column(name = "GNPOld")
-    private float gNPOld;
+    private Float gNPOld;
 
     @Column(name = "LocalName")
     private String localName;
@@ -53,7 +52,7 @@ public class Country {
     private String headOfState;
 
     @Column(name = "Capital")
-    private int capital;
+    private Integer capital;
 
     @Column(name = "Code2")
     private String code2;
