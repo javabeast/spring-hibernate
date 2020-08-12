@@ -1,10 +1,12 @@
 package com.spring.hibernate.springhibernate.daoImpl;
 
-import com.spring.hibernate.springhibernate.dao.CityDao;
 import com.spring.hibernate.springhibernate.domain.City;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -13,13 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CityDaoImplTest {
 
+    @InjectMocks
+    private CityDaoImpl cityDaoImpl;
+
     @Mock
-    private CityDao cityDao;
+    private Session session;
 
     @Mock
     private EntityManager entityManager;
@@ -27,7 +33,7 @@ class CityDaoImplTest {
 
     @BeforeEach
     void setUp() {
-       // do nothing
+        lenient().when(entityManager.unwrap(Session.class)).thenReturn(session);
     }
 
     @Test
@@ -35,21 +41,30 @@ class CityDaoImplTest {
         List<City> cityList = new ArrayList<>();
         cityList.add(buildCityObject());
 
-        when(cityDao.get()).thenReturn(cityList);
+        Query<City> cityQuery = mock(Query.class);
+        when(session.createQuery("from City", City.class)).thenReturn(cityQuery);
+        when(cityQuery.getResultList()).thenReturn(cityList);
 
-        assertEquals(cityDao.get(), cityList);
+        List<City> actualList = cityDaoImpl.get();
+        assertNotNull(actualList);
+        assertEquals(cityList, actualList);
+        assertEquals(cityList.size(), actualList.size());
+
     }
 
     @Test
     void testGetCityById() {
+        //do nothing
     }
 
     @Test
     void testSave() {
+        //do nothing
     }
 
     @Test
     void testDelete() {
+        //do nothing
     }
 
     private City buildCityObject(){
