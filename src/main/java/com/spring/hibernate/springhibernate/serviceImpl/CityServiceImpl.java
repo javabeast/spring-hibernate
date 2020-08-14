@@ -20,8 +20,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City get(int id) {
-        return cityDao.get(id);
+    public City get(String name) {
+        return cityDao.get(name);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void delete(int id) {
-        cityDao.delete(id);
+    public void delete(String cityCode) {
+        cityDao.delete(cityCode);
     }
 }

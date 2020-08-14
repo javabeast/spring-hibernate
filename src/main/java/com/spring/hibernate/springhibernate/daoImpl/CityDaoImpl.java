@@ -25,9 +25,9 @@ public class CityDaoImpl implements CityDao {
     }
 
     @Override
-    public City get(int id) {
+    public City get(String cityCode) {
         Session currentSession = entityManager.unwrap(Session.class);
-        City cityObj = currentSession.get(City.class, id);
+        City cityObj = currentSession.get(City.class, cityCode);
         return cityObj;
     }
 
@@ -38,9 +38,9 @@ public class CityDaoImpl implements CityDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String cityCode) {
         Session currentSession = entityManager.unwrap(Session.class);
-        City cityObj = currentSession.get(City.class, id);
+        City cityObj = currentSession.get(City.class, cityCode);
         currentSession.delete(cityObj);
     }
 }

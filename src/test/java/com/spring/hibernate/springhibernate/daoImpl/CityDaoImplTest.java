@@ -70,7 +70,7 @@ class CityDaoImplTest {
     private City buildCityObject(){
         City city = new City();
         city.setName("INDIA");
-        city.setCountryCode("IN");
+        city.setCode("IN");
         city.setDistrict("BANGALORE");
         city.setPopulation(130000000);
         return city;

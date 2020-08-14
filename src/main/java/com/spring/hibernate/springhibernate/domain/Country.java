@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -12,16 +13,16 @@ import javax.persistence.*;
 public class Country {
 
     @Id
-    @Column(name = "Code")
+    @Column(name = "Code", columnDefinition = "char")
     private String code;
 
-    @Column(name = "Name")
+    @Column(name = "Name", columnDefinition = "char")
     private String name;
 
-    @Column (name = "continent")
+    @Column (name = "continent", columnDefinition = "enum")
     private String continent;
 
-    @Column(name = "Region")
+    @Column(name = "Region", columnDefinition = "char")
     private String region;
 
     @Column(name = "SurfaceArea")
@@ -42,19 +43,23 @@ public class Country {
     @Column(name = "GNPOld")
     private Float gNPOld;
 
-    @Column(name = "LocalName")
+    @Column(name = "LocalName", columnDefinition = "char")
     private String localName;
 
-    @Column(name = "GovernmentForm")
+    @Column(name = "GovernmentForm", columnDefinition = "char")
     private String governmentForm;
 
-    @Column(name = "HeadOfState")
+    @Column(name = "HeadOfState", columnDefinition = "char")
     private String headOfState;
 
     @Column(name = "Capital")
     private Integer capital;
 
-    @Column(name = "Code2")
+    @Column(name = "Code2", columnDefinition = "char")
     private String code2;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "Code")
+    private Set<City> cities;
 
 }

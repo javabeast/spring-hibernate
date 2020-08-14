@@ -31,6 +31,6 @@ class CityControllerTest {
 
     @Test
     void testGet() throws Exception {
-        mockMvc.perform(get("/city/getAllCity")).andExpect(status().isOk());
+        mockMvc.perform(get("/city/getallcity")).andExpect(status().isOk());
     }
 }
