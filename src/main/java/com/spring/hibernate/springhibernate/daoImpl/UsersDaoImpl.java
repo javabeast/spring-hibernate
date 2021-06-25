@@ -1,7 +1,6 @@
 package com.spring.hibernate.springhibernate.daoImpl;
 
 import com.spring.hibernate.springhibernate.dao.UsersDao;
-import com.spring.hibernate.springhibernate.domain.City;
 import com.spring.hibernate.springhibernate.domain.Users;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

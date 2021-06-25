@@ -19,7 +19,7 @@ public class CityDaoImpl implements CityDao {
     @Override
     public List<City> get() {
         Session currentSession = entityManager.unwrap(Session.class);
-        Query<City> query = currentSession.createQuery("from City", City.class);
+        Query<City> query = currentSession.createQuery("from City where countryCode='NLD'", City.class);
         List<City> list = query.getResultList();
         return list;
     }
