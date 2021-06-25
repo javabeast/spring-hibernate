@@ -19,7 +19,7 @@ public class CountryDaoImpl implements CountryDao {
     @Override
     public List<Country> get() {
         Session session = entityManager.unwrap(Session.class);
-        Query<Country> countryQuery = session.createQuery("from Country", Country.class);
+        Query<Country> countryQuery = session.createQuery("from Country where Code='NLD'", Country.class);
         List<Country> countryList = countryQuery.getResultList();
         return countryList;
     }

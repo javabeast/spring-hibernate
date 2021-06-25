@@ -12,7 +12,7 @@ import java.util.List;
 @Transactional(readOnly = true, propagation = Propagation.NEVER)
 public interface CityRepository extends CrudRepository<City, String> {
 
-    @Query(value = "select * from city where code = :code ", nativeQuery = true)
+    @Query(value = "select * from city where CountryCode = :code ", nativeQuery = true)
     List<City> findCityByCode(@Param("code") String code);
 }
 

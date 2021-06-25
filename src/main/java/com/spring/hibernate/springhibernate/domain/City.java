@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @SuppressWarnings("ALL")
 @Entity
@@ -11,17 +12,24 @@ import javax.persistence.*;
 @Setter
 public class City {
 
-    @Column(name = "Name", columnDefinition = "char")
+    @Id
+    @Column
+    private int Id;
+
+    @Column(name = "Name")
     private String name;
 
-    @Id
-    @Column(name = "Code", columnDefinition = "char", nullable=false)
-    private String code;
+    @Column(name = "CountryCode")
+    private String countryCode;
 
-    @Column(name = "District", columnDefinition = "char")
+    @Column(name = "District")
     private String district;
 
     @Column(name = "Population")
     private int population;
+
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CountryCode", referencedColumnName="Code")
+    private Country country;
 
 }

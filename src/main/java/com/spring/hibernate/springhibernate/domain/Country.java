@@ -46,7 +46,7 @@ public class Country {
     @Column(name = "LocalName", columnDefinition = "char")
     private String localName;
 
-    @Column(name = "GovernmentForm", columnDefinition = "char")
+    @Column(name = "GovernmentForm")
     private String governmentForm;
 
     @Column(name = "HeadOfState", columnDefinition = "char")
@@ -58,8 +58,8 @@ public class Country {
     @Column(name = "Code2", columnDefinition = "char")
     private String code2;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "Code")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "Code", referencedColumnName="CountryCode")
     private Set<City> cities;
 
 }
