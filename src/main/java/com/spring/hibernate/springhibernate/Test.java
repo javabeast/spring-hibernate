@@ -7,5 +7,6 @@ public class Test {
     public static void main(String[] args) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         new Date(timestamp.getTime());
+        System.out.println(timestamp);
     }
 }
